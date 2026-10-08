@@ -26,7 +26,7 @@ def _find_local_model() -> Path | None:
         return None
 
     priority = (
-        "Qwen3-8B-MLX-4bit",
+        "Qwen3-8B-4bit",
         "phi-3-mini-128k-instruct-4bit-mlx",
         "mistral-7b-instruct-v0.2",
     )
@@ -48,7 +48,7 @@ def _default_model() -> str:
     if bundled is not None:
         return str(bundled)
     # Fallback to a public MLX model; users may need to authenticate with HF.
-    return "mlx-community/Qwen3-8B-MLX-4bit"
+    return "mlx-community/Qwen3-8B-4bit"
 
 
 @dataclass(slots=True)

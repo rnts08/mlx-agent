@@ -41,7 +41,7 @@ mlx-agent chat --color "Review main.py"
 
 ### Downloading a model the first time
 
-If the `models/` directory is empty, the CLI falls back to `mlx-community/Qwen3-8B-MLX-4bit` on Hugging Face. That repository requires accepting the license, so you must authenticate before the initial download.
+If the `models/` directory is empty, the CLI falls back to `mlx-community/Qwen3-8B-4bit` on Hugging Face. That repository is public (Apache-2.0), so it downloads without extra setup; authenticating is only needed for private or gated models.
 
 1. Create an access token on <https://huggingface.co/settings/tokens>.
 2. Log in from the terminal (the CLI installs an `hf` executable):
@@ -53,17 +53,17 @@ If the `models/` directory is empty, the CLI falls back to `mlx-community/Qwen3-
 3. Pull the model into a local directory (you can choose any destination):
 
    ```bash
-   hf download mlx-community/Qwen3-8B-MLX-4bit \
-     --local-dir models/Qwen3-8B-MLX-4bit
+   hf download mlx-community/Qwen3-8B-4bit \
+     --local-dir models/Qwen3-8B-4bit
    ```
 
 4. Point the CLI at the downloaded weights:
 
    ```bash
-   mlx-agent chat --model models/Qwen3-8B-MLX-4bit "hello"
+   mlx-agent chat --model models/Qwen3-8B-4bit "hello"
    ```
 
-For other models, accept the license on Hugging Face first, then substitute the new repo ID in the commands above. The `.gitignore` already excludes `models/` so large weights never end up in commits.
+For other models, check whether the repo is private or gated on Hugging Face first, then substitute the new repo ID in the commands above. The `.gitignore` already excludes `models/` so large weights never end up in commits.
 
 Key REPL shortcuts:
 
@@ -84,7 +84,7 @@ mlx-agent chat --context src/main.py --context docs/plan.md "Review the diff abo
 The CLI merges CLI flags with TOML configuration. A generated config looks like:
 
 ```toml
-model = "mlx-community/Qwen3-8B-MLX-4bit"
+model = "mlx-community/Qwen3-8B-4bit"
 max_context_tokens = 8192
 preload = true
 
