@@ -106,7 +106,7 @@ class MLXEngine:
             raise RuntimeError(message)
 
         try:
-            self.model, self.tokenizer = load(resolved_model, **load_kwargs)
+            loaded = load(resolved_model, **load_kwargs)
         except FileNotFoundError as exc:
             message = (
                 "Failed to read model weights. If you are using a local directory, "
@@ -138,6 +138,8 @@ class MLXEngine:
             raise RuntimeError(
                 f"Failed to load model '{raw_model}' ({resolved_model}): {exc}"
             ) from exc
+
+        self.model, self.tokenizer = loaded[0], loaded[1]
 
         if hasattr(self.model, "eval"):
             self.model.eval()
