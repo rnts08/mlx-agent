@@ -5,8 +5,8 @@ from types import SimpleNamespace
 
 import pytest
 
-from mlx_dev_agent.config import AgentConfig
 from mlx_dev_agent import engine as engine_module
+from mlx_dev_agent.config import AgentConfig
 from mlx_dev_agent.engine import MLXEngine, _normalize_model_identifier
 
 
